@@ -12,25 +12,95 @@
 
     <canvas id="confetti"></canvas>
 
-    <div class="container">
-        <h1>🎂 Happy Birthday, <span id="name">Karthik</span> 🎉</h1>
+    <!-- Gallery Toggle Button -->
+    <button class="gallery-toggle" onclick="toggleGallery()">
+        <span id="galleryIcon">📸</span>
+    </button>
 
-        <div class="photo-frame">
-            <img src="images/photo1.jpg" alt="Birthday Pic">
+    <!-- Photo Gallery Sidebar -->
+    <div class="gallery-sidebar" id="gallerySidebar">
+        <div class="gallery-header">
+            <h3>🎨 Memory Lane</h3>
+            <button class="gallery-close" onclick="toggleGallery()">✕</button>
         </div>
-
-        <div class="wish" id="wish">
-            Wishing you a year full of laughter, love, and magic! ✨
+        <div class="gallery-grid">
+            <div class="gallery-item" onclick="openLightbox(0)">
+                <img src="images/photo1.jpg" alt="Memory 1">
+                <div class="gallery-overlay">
+                    <span>View</span>
+                </div>
+            </div>
+            <div class="gallery-item" onclick="openLightbox(1)">
+                <img src="images/photo2.jpg" alt="Memory 2">
+                <div class="gallery-overlay">
+                    <span>View</span>
+                </div>
+            </div>
+            <div class="gallery-item" onclick="openLightbox(2)">
+                <img src="images/photo3.jpg" alt="Memory 3">
+                <div class="gallery-overlay">
+                    <span>View</span>
+                </div>
+            </div>
+            <div class="gallery-item" onclick="openLightbox(3)">
+                <img src="images/photo4.jpg" alt="Memory 4">
+                <div class="gallery-overlay">
+                    <span>View</span>
+                </div>
+            </div>
         </div>
-
-        <div class="music-controls">
-            <button class="music-btn" id="musicBtn" onclick="toggleMusic()">🎵 Play Music</button>
-        </div>
-
-        <div class="share" onclick="shareWish()">📱 Share This Wish</div>
     </div>
 
-    <audio id="music" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
+    <!-- Lightbox for full-size images -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+        <button class="lightbox-close">✕</button>
+        <button class="lightbox-prev" onclick="event.stopPropagation(); changeLightboxImage(-1)">‹</button>
+        <button class="lightbox-next" onclick="event.stopPropagation(); changeLightboxImage(1)">›</button>
+        <img id="lightboxImage" src="" alt="Full view">
+        <div class="lightbox-caption" id="lightboxCaption"></div>
+    </div>
+
+    <div class="container">
+        <h1>🎂 Happy Birthday, <span id="name">Karthik</span>! 🎉</h1>
+        
+        <div class="cake-icon">🎂</div>
+
+        <div class="photo-container">
+            <div class="photo-frame" onclick="triggerFireworks()">
+                <img src="images/photo1.jpg" alt="Birthday Star">
+            </div>
+        </div>
+
+        <div class="wish-container">
+            <div class="wish" id="wish">
+                May your special day be filled with endless joy, laughter that echoes through the years, and magical moments that become cherished memories. Here's to another year of amazing adventures! ✨🎈
+            </div>
+        </div>
+
+        <div class="controls">
+            <button class="btn music-btn" onclick="toggleMusic()">
+                <span id="musicIcon">🎵 Play Music</span>
+            </button>
+            <button class="btn surprise-btn" onclick="showSurprise()">
+                <span>✨ Special Message</span>
+            </button>
+            <button class="btn share-btn" onclick="shareWish()">
+                <span>📱 Share Wish</span>
+            </button>
+        </div>
+    </div>
+
+    <div class="message-popup" id="messagePopup">
+        <h2>💖 A Special Message For You</h2>
+        <p>
+            On your birthday, I want you to know how grateful I am to have you in my life. 
+            Your friendship brings so much light and happiness. May this year bring you everything 
+            you've been dreaming of and more! Keep shining bright! 🌟
+        </p>
+        <button class="close-btn" onclick="closePopup()">Close</button>
+    </div>
+
+    <audio id="music" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" loop></audio>
     <script src="script.js"></script>
 
 </body>
